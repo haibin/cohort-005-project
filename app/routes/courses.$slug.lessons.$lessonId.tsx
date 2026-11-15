@@ -18,25 +18,31 @@ import { MAX_NOTE_LENGTH } from "~/lib/notes";
 import { FullLesson } from "~/components/lesson-full";
 import { LockedLesson } from "~/components/lesson-locked";
 import {
-  calculateWatchProgress,
-  computeResult,
-  getBestAttempt,
-  getCommentById,
   getCourseWithDetails,
-  getLastWatchPosition,
   getLessonById,
+  getModuleById,
+  getUserById,
+} from "~/modules/lesson-viewer/course.server";
+import {
+  calculateWatchProgress,
+  getLastWatchPosition,
   getLessonProgress,
   getLessonProgressForCourse,
+  markLessonComplete,
+  markLessonInProgress,
+} from "~/modules/lesson-viewer/progress.server";
+import {
+  getCommentById,
   getLessonThread,
-  getModuleById,
+  renderThread,
+} from "~/modules/lesson-viewer/thread.server";
+import {
+  computeResult,
+  getBestAttempt,
   getQuizById,
   getQuizByLessonId,
   getQuizWithQuestions,
-  getUserById,
-  markLessonComplete,
-  markLessonInProgress,
-  renderThread,
-} from "~/modules/lesson-viewer/index.server";
+} from "~/modules/lesson-viewer/quiz.server";
 import { db } from "~/db";
 import { Button } from "~/components/ui/button";
 import { AlertTriangle } from "lucide-react";
