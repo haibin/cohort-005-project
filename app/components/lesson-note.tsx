@@ -68,11 +68,13 @@ function NoteStatus({
     );
   }
   if (draft.status === "unsaved") {
+    // A rejected save leaves the draft unsaved, so the server's reason has to
+    // win over "Unsaved changes" or the Student never sees why it failed.
+    if (error) return <span className="text-sm text-destructive">{error}</span>;
     return (
       <span className="text-xs text-muted-foreground">Unsaved changes</span>
     );
   }
-  if (error) return <span className="text-sm text-destructive">{error}</span>;
   if (draft.status === "saved" && note) {
     return (
       <span suppressHydrationWarning className="text-xs text-muted-foreground">
